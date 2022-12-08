@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   post "/posts", to: "posts#create"
+  get "/posts", to: "posts#index"
+  post "/ratings", to: "ratings#create"
 end
