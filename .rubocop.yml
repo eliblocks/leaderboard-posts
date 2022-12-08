@@ -1,0 +1,21 @@
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "bin/bundle"
+    - "config/**/*"
+    - "spec/rails_helper.rb"
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Layout/SpaceInsidePercentLiteralDelimiters:
+  Enabled: false
+Style/NumericLiterals:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Metrics/BlockLength:
+  AllowedMethods: ["describe", "context", "define"]
+Style/HashSyntax:
+  Enabled: false

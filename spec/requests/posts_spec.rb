@@ -1,18 +1,18 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "/posts", type: :request do
   let(:valid_attributes) do
-    { 
+    {
       title: "My dog ate a mouse",
       body: "OMG it was so gross",
-      ip: "292.77.54",
+      ip: "292.77.54"
     }
   end
 
   let(:invalid_attributes) do
     {
       body: "OMG it was so gross",
-      ip: "292.77.54",
+      ip: "292.77.54"
     }
   end
 
@@ -25,15 +25,15 @@ RSpec.describe "/posts", type: :request do
   describe "POST /create" do
     context "with valid parameters" do
       it "creates a new post" do
-        expect {
+        expect do
           post posts_url,
-            params: { post: valid_attributes, user: user }, as: :json
-        }.to change(Post, :count).by(1)
+               params: { post: valid_attributes, user: user }, as: :json
+        end.to change(Post, :count).by(1)
       end
 
       it "renders a JSON response with the new post" do
         post posts_url,
-          params: { post: valid_attributes, user: user }, as: :json
+             params: { post: valid_attributes, user: user }, as: :json
         expect(response).to have_http_status(:created)
         expect(response.content_type).to match(a_string_including("application/json"))
       end
@@ -41,10 +41,10 @@ RSpec.describe "/posts", type: :request do
 
     context "with invalid parameters" do
       it "does not create a new post" do
-        expect {
+        expect do
           post posts_url,
                params: { post: invalid_attributes, user: user }, as: :json
-        }.to change(Post, :count).by(0)
+        end.to change(Post, :count).by(0)
       end
 
       it "renders a JSON response with errors for the new post" do
