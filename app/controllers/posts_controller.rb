@@ -15,6 +15,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def shared_ip_addresses
+    render json: Post.shared_ip_addresses
+  end
+
   def post_params
     params.require(:post).permit(:title, :body, :ip)
   end

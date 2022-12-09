@@ -7,5 +7,6 @@ Rails.application.routes.draw do
 
   post "/posts", to: "posts#create"
   get "/posts", to: "posts#index"
+  get "/posts/shared_ip_addresses", to: "posts#shared_ip_addresses"
   post "/ratings", to: "ratings#create"
 end

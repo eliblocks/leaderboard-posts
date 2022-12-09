@@ -8,7 +8,6 @@ class RatingsController < ApplicationController
     end
 
     render json: rating, include: :post, status: :created
-
   rescue ActiveRecord::RecordInvalid
     render json: rating.errors, status: :unprocessable_entity
   end

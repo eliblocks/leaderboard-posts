@@ -19,3 +19,7 @@ Metrics/BlockLength:
   AllowedMethods: ["describe", "context", "define"]
 Style/HashSyntax:
   Enabled: false
+Style/WordArray:
+  Enabled: false
+Style/SymbolArray:
+  Enabled: false

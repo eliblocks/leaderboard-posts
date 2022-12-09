@@ -24,17 +24,30 @@ RSpec.describe "/posts", type: :request do
 
   describe "GET /" do
     it "returns the top rated posts" do
-      second_post = { title: "my life", body: "once upon a time", ip: "232.11.21", average_rating: 4.0 }
+      second_post = { title: "my life", body: "once upon a time", ip: "292.77.54", average_rating: 4.0 }
       user = User.create(user_attributes)
       user.posts.create(valid_attributes)
       user.posts.create(second_post)
 
       get posts_url(limit: 1)
 
-      expect(response.status).to eq 200
+      expect(response).to have_http_status(:ok)
 
       expect(response_body.count).to eq(1)
       expect(response_body[0]["title"]).to eq("my life")
+    end
+  end
+
+  describe "GET /shared_ip_addresses" do
+    it "returns a json response" do
+      user = User.create(user_attributes)
+      user.posts.create(valid_attributes)
+      second_user = User.create(login: "matt")
+      second_user.posts.create(title: "bar", body: "bar body", ip: Post.first.ip)
+
+      get "/posts/shared_ip_addresses"
+
+      expect(response).to have_http_status(:ok)
     end
   end
 
