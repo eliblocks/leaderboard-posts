@@ -63,17 +63,3 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 end
-
-
-SELECT ip,
-  array_agg(users.login)
-FROM posts
-INNER JOIN user ON posts.user_id = users.id
-GROUP BY ip;
-
-
-SELECT posts.ip, 
-  array_agg(users.login)
-FROM posts 
-INNER JOIN users ON posts.user_id = users.id
-GROUP BY posts.ip;
